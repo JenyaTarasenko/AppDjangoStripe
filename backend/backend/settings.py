@@ -2,6 +2,10 @@
 from datetime import timedelta
 from pathlib import Path
 import stripe
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -118,8 +122,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-
-STRIPE_SECRET_KEY = "sk_test_51OvlZFRorFGpqmDCRiTfu5Jpb9BQXiI1JlQA0zo1SlUkfloY0JrwSy4GjixLe8Zl7QDkzsZidiBnHnXtcIxKU5sL00lcfCU2Kj"
-STRIPE_PUBLISHABLE_KEY = "pk_test_51OvlZFRorFGpqmDC4SScrdkXx77VvYadNUtO14TIPs7IK5AH4oP5I0F7LmBT3bmQNe9Y0316uLs6er5NdLVceZ6200QDVc9tzB"
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
 
 stripe.api_key = STRIPE_SECRET_KEY
